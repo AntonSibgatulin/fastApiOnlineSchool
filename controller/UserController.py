@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends
 
 from dto.user.UserAuthDTO import UserAuthDTO
 from dto.user.UserRegDTO import UserRegDTO
-from model.user.Token import Token
+from models.user.Token import Token
 
-from model.user.User import User
+from models.user.User import User
 from sqlalchemy.orm import Session
 
 from response.user.UserSchema import UserSchema, TokenSchema
@@ -19,7 +19,7 @@ userControllerRouter = APIRouter()
 
 @userControllerRouter.post("/reg")
 def reg(userDto: UserRegDTO, db=Depends(init_db)):
-    user = User.toUser(userDto)
+    user = User.init(userDto)
     db.add(user)
     db.commit()
     db.refresh(user)

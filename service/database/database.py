@@ -2,7 +2,7 @@ from sqlalchemy import func, create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-from model.user import User
+from models.user import User
 from response.user.UserSchema import UserSchema
 
 DATABASE_URL = "mysql+mysqlconnector://root:Dert869$$@localhost/online-school"

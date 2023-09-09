@@ -17,5 +17,5 @@ class User(Base):
     token = None
 
     @classmethod
-    def toUser(cls, userDTO: UserRegDTO):
+    def init(cls, userDTO: UserRegDTO):
         return cls(id=None, name=userDTO.name, surname=userDTO.surname, email=userDTO.email, password=userDTO.password)

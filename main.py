@@ -1,15 +1,16 @@
+from pyexpat import model
+
 from fastapi import FastAPI, Depends
 from fastapi.security import HTTPBearer
 
 from controller.ArticleController import article_router
 from controller.UserController import userControllerRouter
 
-from service.database.database import *
-from service.security.securityService import *
+from service.database.database import Base, engine, init_db
+from service.security.securityService import get_token
 
-from service.database.database import Base
+model.Base.metadata.create_all(bind=engine)
 
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Online School")
 security = HTTPBearer()

@@ -1,4 +1,4 @@
-from model.user.User import User
+from models.user.User import User
 from service.database.database import SessionLocal
 
 import service.redis.redisController as Redis
