@@ -17,4 +17,4 @@ app.include_router(userControllerRouter, prefix="/api/user", dependencies=[Depen
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Артемм иди нахуй"}
