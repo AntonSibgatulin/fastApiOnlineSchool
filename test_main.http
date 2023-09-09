@@ -33,3 +33,8 @@ Content-Type: application/json
   "password": "Dert869$"
 }
 
+
+###
+
+GET http://127.0.0.1:8000/api/article/get
+Accept: application/json

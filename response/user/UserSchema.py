@@ -7,3 +7,7 @@ class UserSchema(Schema):
     surname = fields.String()
     email = fields.String()
     token = None
+
+
+class TokenSchema(Schema):
+    token = fields.String()

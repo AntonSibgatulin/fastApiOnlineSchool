@@ -1,20 +1,22 @@
 from fastapi import FastAPI, Depends
+from fastapi.security import HTTPBearer
+
+from controller.ArticleController import article_router
 from controller.UserController import userControllerRouter
 
 from service.database.database import *
+from service.security.securityService import *
 
-import service.redis.redisController
+from service.database.database import Base
 
-from model.user.User import Base as base_user
-from model.user.Token import Base as base_token
-
-base_user.metadata.create_all(bind=engine)
-base_token.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Online School")
-app.include_router(userControllerRouter, prefix="/api/user", dependencies=[Depends(init_db)])
+security = HTTPBearer()
+app.include_router(userControllerRouter, prefix="/api/user", dependencies=[Depends(init_db), Depends(get_token)])
+app.include_router(article_router, prefix="/api/article", dependencies=[Depends(init_db), Depends(get_token)])
 
 
 @app.get("/")
 async def root():
-    return {"message": "Артемм иди нахуй"}
+    return {"message": "Hello world", "description": "", "name": ""}
