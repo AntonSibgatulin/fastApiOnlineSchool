@@ -18,7 +18,18 @@ Content-Type: application/json
 {
   "name": "Anton",
   "surname": "Sibgatulin",
-  "email": "89879202@mail.ru",
-  "password": "Dert869$$"
+  "email": "89879201@mail.ru",
+  "password": "Dert869$"
+}
+
+###
+
+POST http://127.0.0.1:8000/api/user/auth
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "8987920@mail.ru",
+  "password": "Dert869$"
 }
 
